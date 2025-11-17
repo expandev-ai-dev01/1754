@@ -6,11 +6,12 @@
  * @module routes/v1/internal
  */
 import { Router } from 'express';
+import productRoutes from '@/api/v1/internal/product/routes';
+import stockMovementRoutes from '@/api/v1/internal/stock-movement/routes';
 
 const router = Router();
 
-// Example of where a feature route would be added:
-// import stockRoutes from '@/api/v1/internal/stock/routes';
-// router.use('/stock', stockRoutes);
+router.use('/product', productRoutes);
+router.use('/stock-movement', stockMovementRoutes);
 
 export default router;

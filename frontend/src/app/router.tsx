@@ -4,7 +4,9 @@ import { ErrorBoundary } from '@/core/components/ErrorBoundary';
 import { LoadingSpinner } from '@/core/components/LoadingSpinner';
 import { AppLayout } from '@/pages/layouts/AppLayout';
 
-const HomePage = lazy(() => import('@/pages/Home'));
+const ProductsPage = lazy(() => import('@/pages/Products'));
+const NewProductPage = lazy(() => import('@/pages/NewProduct'));
+const MovementHistoryPage = lazy(() => import('@/pages/MovementHistory'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 export const router = createBrowserRouter([
@@ -21,11 +23,26 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <HomePage />
+            <ProductsPage />
           </Suspense>
         ),
       },
-      // Feature routes will be added here
+      {
+        path: 'products/new',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <NewProductPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'history',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <MovementHistoryPage />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
